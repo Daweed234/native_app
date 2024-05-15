@@ -1,42 +1,53 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput } from "react-native";
-// import { View } from "react-native-reanimated/lib/typescript/Animated";
+import React, { useState } from 'react'
+import { StyleSheet, View, Text, TextInput } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler';
 
-const Home = () => {
+export default function index () {
+
+  const [people, statePoeple] = useState([
+    { name: 'david', age:'20', key:1},
+    { name: 'john', age:'22', key:2},
+    { name: 'jane', age:'19', key:3},
+    { name: 'chris', age:'19', key:4},
+    { name: 'kylian', age:'30', key:5},
+    { name: 'kenny', age:'27', key:6},
+    { name: 'sun', age:'19', key:7},    
+    { name: 'korea', age:'27', key:8},
+    { name: 'ron', age:'19', key:9},
+    { name: 'mandela', age:'27', key:10},
+    { name: 'chance', age:'19', key:11,}   
+  ]);
+
   return (
-    <>
-      <View style={styles.viewLogo}>
-        <Text style={styles.classLogo}>hello dear</Text>
-        <Text>myname is ntwali
-        </Text>
-      </View>
+    <ScrollView>
       <View>
-        <Text>Enter name:</Text>
-        <TextInput style={styles.input} />
-      </View>
-    </>
-  );
-};
-
-export default Home;
+      {
+        people.map((items) => {
+          return(
+            <View style={styles.container}>
+              <Text style={styles.item}>
+                {items.name}, {items.age}
+              </Text>
+            </View>
+          )
+        })
+      }
+    </View>
+    </ScrollView>
+  )
+}
 
 const styles = StyleSheet.create({
-  classLogo: {
-    // position: "absolute",
-    justifyContent: "center",
-    // alignContent:'',
-    backgroundColor: "green",
-    alignItems:'center',
-    padding: 20,
+  container: {
+    flex:1,
+    paddingTop:40,
+    paddingHorizontal:20,
+    backgroundColor:'lightblue',
   },
-  viewLogo: {
-    padding: 50,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  input:{
-    backgroundColor:'red',
-    borderColor:'black',
-    borderWidth:1,
+  item: {
+    fontSize:20,
+    padding:30,
+    marginTop:20,
+    backgroundColor:'lightgreen'
   }
-});
+})
